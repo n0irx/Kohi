@@ -313,4 +313,5 @@ fabric.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/android,androidstudio,kotlin,git,linux,windows,java
 
-
+.idea/**/*
+.idea
