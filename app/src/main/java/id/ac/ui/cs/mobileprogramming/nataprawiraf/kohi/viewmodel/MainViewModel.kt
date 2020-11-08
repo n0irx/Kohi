@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.viewmodel
 
 import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
@@ -10,7 +10,7 @@ import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.TastingNote
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.repository.RecipeRepository
 
 
-class RecipeViewModel(private val repository: RecipeRepository): ViewModel() {
+class MainViewModel(private val repository: RecipeRepository): ViewModel() {
 
     val recipes: LiveData<List<Recipe>> = repository.recipes
 
