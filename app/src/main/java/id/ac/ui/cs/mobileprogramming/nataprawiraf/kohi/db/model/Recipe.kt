@@ -8,23 +8,20 @@ import androidx.room.PrimaryKey
 data class Recipe(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "recipe_id")
-    val id: Long,
+    val recipeId: Long,
 
     @ColumnInfo(name = "recipe_name")
-    var name: String,
+    var recipeName: String,
 
-    @ColumnInfo(name = "recipe_author")
-    var author: Author,
+    @ColumnInfo(name = "recipe_author_name")
+    var authorName: String,
 
     @ColumnInfo(name = "recipe_image_source")
-    var imageSrc: String,
+    var imageSource: String,
 
     @ColumnInfo(name = "recipe_brew_method")
     var brewMethod: String = "",
 
-    @ColumnInfo(name = "recipe_tasting_notes")
-    var tastingNotes: MutableList<TastingNote>,
-
-    @ColumnInfo(name = "recipe_preparation_time")
-    var preparationTime: Long
+    @ColumnInfo(name = "recipe_preparation_note")
+    var note: String
 )
