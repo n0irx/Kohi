@@ -1,3 +1,23 @@
 <resources>
-    <string name="app_name">Kohi</string>
+    <string name="app_name">Kōhī</string>
+
+    <!-- Start Create Recipe-->
+    <string name="recipe_create_title">Add New Recipe</string>
+    <string name="recipe_name_label">Recipe Name:</string>
+    <string name="recipe_name_input">e.g Gayo Madness</string>
+    <string name="recipe_coffee_label">Coffee (gr):</string>
+    <string name="recipe_water_label">Water (gr):</string>
+    <string name="recipe_temperature_label">Temperature (°C):</string>
+    <string name="recipe_grindSize_label">Grind Size:</string>
+    <string name="create_recipeName_hint">Gayo Madness</string>
+    <string name="grindSize_veryFine">Very Fine</string>
+    <string name="grindSize_fine">Fine</string>
+    <string name="grindSize_mediumFine">Medium Fine</string>
+    <string name="grindSize_medium">Medium</string>
+    <string name="grindSize_mediumCoarse">Medium Coarse</string>
+    <string name="grindSize_coarse">Coarse</string>
+    <string name="grindSize_extraCoarse">Extra Coarse</string>
+
+    <!-- End Create Recipe-->
+
 </resources>
