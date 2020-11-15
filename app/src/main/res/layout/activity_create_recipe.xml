@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="createRecipeViewModel"
+            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.viewmodel.CreateRecipeViewModel" />
+    </data>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#161616"
+        android:orientation="vertical"
+        tools:context=".view.CreateRecipeActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_create_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:text="@string/recipe_create_title"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/colorMidnight"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!--Name-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeName_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_name_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipeName_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@color/colorTrueBlack"
+                        android:ems="10"
+                        android:hint="@string/create_recipeName_hint"
+                        android:inputType="textPersonName"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorStorm"
+                        android:text="@={createRecipeViewModel.inputName}"
+                        android:textColor="@color/colorSmoke"
+                        android:textColorHint="@color/colorStorm"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeCoffeeBlend_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_coffeeBlend_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipeCoffeeBlend_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={createRecipeViewModel.inputCoffeeBlend}"
+                        android:autofillHints=""
+                        android:background="@color/colorTrueBlack"
+                        android:ems="10"
+                        android:hint="@string/create_recipeCoffeeBlend_hint"
+                        android:inputType="textPersonName"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorStorm"
+                        android:textColor="@color/colorSmoke"
+                        android:textColorHint="@color/colorStorm"
+                        android:textSize="18sp" />
+                </LinearLayout>
+
+                <!--Coffee-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTrueBlack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeCoffee_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_coffee_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <SeekBar
+                        android:id="@+id/sb_create_recipeCoffee_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="1"
+                        android:background="@color/colorTrueBlack"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:padding="10dp"
+                        android:progress="0" />
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeCoffee_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/colorGainsboro"
+                        android:text="@{createRecipeViewModel.inputCoffee}"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <!--Water-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTrueBlack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeWater_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_water_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <SeekBar
+                        android:id="@+id/sb_create_recipeWater_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="1"
+                        android:background="@color/colorTrueBlack"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:padding="10dp"
+                        android:progress="0" />
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeWater_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/colorGainsboro"
+                        android:text="@{createRecipeViewModel.inputWater}"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <!--Temperature-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTrueBlack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeTemperature_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_temperature_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <SeekBar
+                        android:id="@+id/sb_create_recipeTemperature_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="1"
+                        android:background="@color/colorTrueBlack"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:padding="10dp"
+                        android:progress="0" />
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeTemperature_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:textColor="@color/colorGainsboro"
+                        android:text="@{String.valueOf(createRecipeViewModel.inputTemperature)}"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <!--Grind Size-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorTrueBlack"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipeGrindSize_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_grindSize_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <RadioGroup
+                        android:id="@+id/rb_create_recipeGrindSize_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RadioButton
+                            android:id="@+id/grindSize_veryFine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:shadowColor="@color/colorGainsboro"
+                            android:text="@string/grindSize_veryFine"
+                            android:textColor="@color/colorGainsboro"
+                            android:textColorHighlight="@color/colorGainsboro"
+                            android:textColorHint="@color/colorGainsboro"
+                            android:textColorLink="@color/colorGainsboro" />
+
+                        <RadioButton
+                            android:id="@+id/grindSize_fine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/grindSize_fine"
+                            android:textColor="@color/colorGainsboro"
+                            android:textColorHighlight="@color/colorGainsboro"
+                            android:textColorHint="@color/colorGainsboro"
+                            android:textColorLink="@color/colorGainsboro" />
+
+                        <RadioButton
+                            android:id="@+id/grindSize_mediumFine"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/grindSize_mediumFine"
+                            android:textColor="@color/colorGainsboro"
+                            android:textColorHighlight="@color/colorGainsboro"
+                            android:textColorHint="@color/colorGainsboro"
+                            android:textColorLink="@color/colorGainsboro" />
+
+                        <RadioButton
+                            android:id="@+id/grindSize_medium"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/grindSize_medium"
+                            android:textColor="@color/colorGainsboro"
+                            android:textColorHighlight="@color/colorGainsboro"
+                            android:textColorHint="@color/colorGainsboro"
+                            android:textColorLink="@color/colorGainsboro" />
+
+                        <RadioButton
+                            android:id="@+id/grindSize_mediumCoarse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/grindSize_mediumCoarse"
+                            android:textColor="@color/colorGainsboro"
+                            android:textColorHighlight="@color/colorGainsboro"
+                            android:textColorHint="@color/colorGainsboro"
+                            android:textColorLink="@color/colorGainsboro" />
+
+                        <RadioButton
+                            android:id="@+id/grindSize_coarse"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/grindSize_coarse"
+                            android:textColor="@color/colorGainsboro"
+                            android:textColorHighlight="@color/colorGainsboro"
+                            android:textColorHint="@color/colorGainsboro"
+                            android:textColorLink="@color/colorGainsboro" />
+
+                        <RadioButton
+                            android:id="@+id/grindSize_coarse2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/grindSize_coarse"
+                            android:textColor="@color/colorGainsboro"
+                            android:textColorHighlight="@color/colorGainsboro"
+                            android:textColorHint="@color/colorGainsboro"
+                            android:textColorLink="@color/colorGainsboro" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_create_submit_recipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{()->createRecipeViewModel.createRecipe()}"
+                    android:text="SAVE" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>
