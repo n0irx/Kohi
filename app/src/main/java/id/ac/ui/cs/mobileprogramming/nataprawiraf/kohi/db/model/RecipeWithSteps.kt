@@ -6,7 +6,7 @@ import androidx.room.Relation
 import java.security.acl.Owner
 
 data class RecipeWithSteps(
-    @Embedded val recipe: Owner,
+    @Embedded val recipe: Recipe,
     @Relation(
         parentColumn = "recipeId",
         entityColumn = "stepId",
