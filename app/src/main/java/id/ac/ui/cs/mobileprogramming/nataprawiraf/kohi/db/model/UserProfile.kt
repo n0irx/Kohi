@@ -2,15 +2,12 @@ package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "user_profile")
 data class UserProfile(
-    @ColumnInfo(name="profile_id")
+    @PrimaryKey()
     var profileId: String,
-
-    @ColumnInfo(name="profile_name")
-    var profileName: String,
-
-    @ColumnInfo(name="profile_email")
+    var name: String,
     var email: String
 )

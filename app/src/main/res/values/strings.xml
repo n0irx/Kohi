@@ -17,6 +17,8 @@
     <string name="grindSize_mediumCoarse">Medium Coarse</string>
     <string name="grindSize_coarse">Coarse</string>
     <string name="grindSize_extraCoarse">Extra Coarse</string>
+    <string name="create_recipeCoffeeBlend_hint">Aceh Gayo</string>
+    <string name="recipe_coffeeBlend_label">Coffee Origin/Blend</string>
 
     <!-- End Create Recipe-->
 

@@ -9,7 +9,7 @@ import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.Recipe
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.RecipeStepCrossRef
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.Step
 
-@Database(entities = [Recipe::class, Step::class, RecipeStepCrossRef::class], version = 1)
+@Database(entities = [Recipe::class, Step::class, RecipeStepCrossRef::class], version = 1, exportSchema = false)
 abstract class RecipeDatabase: RoomDatabase() {
 
     abstract val recipeDao: RecipeDao
