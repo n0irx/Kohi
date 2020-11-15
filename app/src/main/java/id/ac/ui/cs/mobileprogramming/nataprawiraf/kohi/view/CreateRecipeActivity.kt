@@ -1,13 +1,10 @@
 package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.view
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
-import org.w3c.dom.Text
 
 const val MIN_WEIGHT_IN_GRAM = 0
 const val MAX_WEIGHT_IN_GRAM = 100
@@ -17,11 +14,10 @@ const val MIN_DEGREE_IN_CELSIUS = 0
 const val MAX_DEGREE_IN_CELSIUS = 100
 const val STEP_IN_CELSIUS = 1
 
-class AddRecipeActivity : AppCompatActivity() {
+class CreateRecipeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_recipe)
-
+        setContentView(R.layout.activity_create_recipe)
 
         // Coffee weight field
         val coffeeSeekBar = findViewById<SeekBar>(R.id.sb_create_recipeCoffee_input)
@@ -67,6 +63,6 @@ class AddRecipeActivity : AppCompatActivity() {
             override fun onStartTrackingTouch(temperatureSeekBar: SeekBar) {}
             override fun onStopTrackingTouch(temperatureSeekBar: SeekBar) {}
         })
-
     }
+
 }

@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         btn_addNewRecipe.setOnClickListener {
-            val intent = Intent(this, AddRecipeActivity::class.java)
+            val intent = Intent(this, CreateRecipeActivity::class.java)
             // start your next activity
             startActivity(intent)
         }
