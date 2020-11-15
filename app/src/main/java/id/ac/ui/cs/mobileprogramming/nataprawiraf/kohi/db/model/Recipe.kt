@@ -8,9 +8,12 @@ import androidx.room.PrimaryKey
 data class Recipe(
     @PrimaryKey(autoGenerate = true)
     val recipeId: Long,
-    var recipeName: String,
-    var authorName: String,
+    var name: String,
+    var coffeeBlend: String,
+    var coffeeAmount: Int,
+    var waterAmount: Int,
+    var waterTemperature: Int,
     var imageSource: String,
-    var brewMethod: String = "",
+    var brewMethod: String,
     var note: String
 )

@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Step(
     @PrimaryKey(autoGenerate = true)
     val stepId: Long,
-    var stepName: String,
-    var stepNumber: Int,
-    var stepTimeInSeconds: Long
+    var name: String,
+    var number: Int,
+    var timeInSeconds: Long
 )
