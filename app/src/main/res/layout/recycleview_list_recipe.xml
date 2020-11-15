@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorMidnight"
+    >
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image_id"
+        android:src="@mipmap/ic_launcher"
+        />
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gayo Madness"
+        android:id="@+id/image_name"
+        android:layout_toRightOf="@+id/image_id"
+        android:textColor="@color/colorGainsboro"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="30dp"
+        android:textSize="18sp"
+        android:layout_toEndOf="@+id/image_id"
+        android:layout_marginStart="30dp" />
+
+</RelativeLayout>
