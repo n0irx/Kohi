@@ -24,7 +24,7 @@
 
     <string name="coffee_blend">咖 %s</string>
     <string name="coffee_and_water_amount">☕ %s gr - 💧 %s ml</string>
-    <string name="preparation_time">🕑 %s</string>
+    <string name="preparation_time">🕑 %s minutes, and %s seconds</string>
     <string name="brew_method">🛠 %s</string>
     <string name="note">📝 %s</string>
 

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/fragment_list_recipe">
+    app:startDestination="@id/fragment_create_recipe">
 
     <fragment
-        android:id="@+id/fragment_list_recipe"
-        android:name="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.list.ListRecipeFragment"
+        android:id="@+id/fragment_create_recipe"
+        android:name="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.create.CreateRecipeFragment"
         android:label="movies_fragment"
-        tools:layout="@layout/fragment_list_recipe" />
+        tools:layout="@layout/fragment_create_recipe" />
 
 </navigation>

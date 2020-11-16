@@ -6,8 +6,8 @@
     <data>
         <import type="android.view.View" />
         <variable
-            name="recipe"
-            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe" />
+            name="recipesWithSteps"
+            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps" />
     </data>
 
     <RelativeLayout
@@ -30,7 +30,7 @@
                 android:id="@+id/recipe_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{recipe.name}"
+                android:text="@{recipesWithSteps.recipe.name}"
                 tools:text="Gayo Madness"
                 android:textColor="@color/colorGainsboro"
                 android:textSize="20sp" />
@@ -39,7 +39,7 @@
                 android:id="@+id/recipe_coffee_blend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/coffee_blend(recipe.coffeeBlend)}"
+                android:text="@{@string/coffee_blend(recipesWithSteps.recipe.coffeeBlend)}"
                 tools:text="咖 Aceh Gayo"
                 android:textColor="@color/colorGainsboro"
                 android:textSize="12sp" />
@@ -48,7 +48,7 @@
                 android:id="@+id/recipe_grind_size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/coffee_and_water_amount(recipe.coffeeAmount, recipe.waterAmount)}"
+                android:text="@{@string/coffee_and_water_amount(recipesWithSteps.recipe.coffeeAmount, recipesWithSteps.recipe.waterAmount)}"
                 tools:text="☕ 17 gr - 💧 210 ml"
                 android:textColor="@color/colorGainsboro"
                 android:textSize="12sp" />
@@ -57,7 +57,7 @@
                 android:id="@+id/recipe_brew_method"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/brew_method(recipe.brewMethod)}"
+                android:text="@{@string/brew_method(recipesWithSteps.recipe.brewMethod)}"
                 tools:text="醸 Aero Press"
                 android:textColor="@color/colorGainsboro"
                 android:textSize="12sp" />
@@ -66,7 +66,7 @@
                 android:id="@+id/recipe_preparation_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/preparation_time(`2 mins 3 seconds`)}"
+                android:text="@{@string/preparation_time(recipesWithSteps.getPreparationTimeMinutes, recipesWithSteps.getPreparationTimeSeconds)}"
                 android:textColor="@color/colorGainsboro"
                 android:textSize="12sp" />
 
@@ -74,7 +74,7 @@
                 android:id="@+id/recipe_note"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{@string/note(recipe.note)}"
+                android:text="@{@string/note(recipesWithSteps.recipe.note)}"
                 tools:text="Fruity, citrus"
                 android:textColor="@color/colorGainsboro"
                 android:textSize="12sp" />
@@ -82,7 +82,7 @@
         </LinearLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            app:image="@{recipe.imageSource}"
+            app:image="@{recipesWithSteps.recipe.imageSource}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/recipe_image"
