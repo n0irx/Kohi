@@ -1,30 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorMidnight"
+    xmlns:tools="http://schemas.android.com/tools"
     >
 
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="recipe"
+            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.Recipe" />
+    </data>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:id="@+id/image_id"
-        android:src="@mipmap/ic_launcher"
-        />
-    
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gayo Madness"
-        android:id="@+id/image_name"
-        android:layout_toRightOf="@+id/image_id"
-        android:textColor="@color/colorGainsboro"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="30dp"
-        android:textSize="18sp"
-        android:layout_toEndOf="@+id/image_id"
-        android:layout_marginStart="30dp" />
+        android:background="@color/colorMidnight"
+        >
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/recipe_image"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@id/recipe_image"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:id="@+id/recipe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{recipe.name}"
+                tools:text="Gayo Madness"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/recipe_coffee_blend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{recipe.coffeeBlend}"
+                tools:text="Aceh Gayo"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_grind_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{recipe.grindSize}"
+                tools:text="Coarse"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_brew_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{recipe.brewMethod}"
+                tools:text="Brew Method: Aero Press"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_preparation_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Preparation Time: 2 mins 30 seconds"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{recipe.note}"
+                tools:text="Fruity, citrusy"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/recipe_image"
+            android:src="@mipmap/ic_launcher"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+</layout>

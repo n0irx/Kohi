@@ -69,7 +69,7 @@
                         android:inputType="textPersonName"
                         android:padding="10dp"
                         android:shadowColor="@color/colorStorm"
-                        android:text="@={createRecipeViewModel.inputName}"
+                        android:text="@{createRecipeViewModel.inputName}"
                         android:textColor="@color/colorSmoke"
                         android:textColorHint="@color/colorStorm"
                         android:textSize="18sp" />
@@ -95,7 +95,7 @@
                         android:id="@+id/et_create_recipeCoffeeBlend_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@={createRecipeViewModel.inputCoffeeBlend}"
+                        android:text="@{createRecipeViewModel.inputCoffeeBlend}"
                         android:autofillHints=""
                         android:background="@color/colorTrueBlack"
                         android:ems="10"
@@ -144,7 +144,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:textColor="@color/colorGainsboro"
-                        android:text="@{createRecipeViewModel.inputCoffeeWeight}"
+                        android:text="@{createRecipeViewModel.inputCoffeeAmount}"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -187,7 +187,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:textColor="@color/colorGainsboro"
-                        android:text="@{createRecipeViewModel.inputWater}"
+                        android:text="@{createRecipeViewModel.inputWaterTemperature}"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -228,7 +228,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:textColor="@color/colorGainsboro"
-                        android:text="@{String.valueOf(createRecipeViewModel.inputWaterTemperature)}"
+                        android:text="@{createRecipeViewModel.inputWaterTemperature}"
                         android:textSize="15sp" />
 
                 </LinearLayout>
@@ -336,7 +336,6 @@
                     android:layout_height="wrap_content"
                     android:onClick="@{()->createRecipeViewModel.createRecipe()}"
                     android:text="SAVE" />
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

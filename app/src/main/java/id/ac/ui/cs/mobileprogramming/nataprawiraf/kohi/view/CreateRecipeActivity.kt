@@ -4,7 +4,14 @@ import android.os.Bundle
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.databinding.ActivityCreateRecipeBinding
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.RecipeDatabase
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.repository.RecipeRepository
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.viewmodel.CreateRecipeViewModel
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.viewmodel.CreateRecipeViewModelFactory
 
 const val MIN_WEIGHT_IN_GRAM = 0
 const val MAX_WEIGHT_IN_GRAM = 100
@@ -15,9 +22,21 @@ const val MAX_DEGREE_IN_CELSIUS = 100
 const val STEP_IN_CELSIUS = 1
 
 class CreateRecipeActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityCreateRecipeBinding
+    private lateinit var createRecipeViewModel: CreateRecipeViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_recipe)
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_create_recipe)
+
+        val dao = RecipeDatabase.getInstance(application).recipeDao
+        val repository = RecipeRepository(dao)
+        val factory = CreateRecipeViewModelFactory(repository)
+
+        createRecipeViewModel = ViewModelProvider(this, factory).get(CreateRecipeViewModel::class.java)
+        binding.createRecipeViewModel = createRecipeViewModel
+        binding.lifecycleOwner = this
 
         // Coffee weight field
         val coffeeSeekBar = findViewById<SeekBar>(R.id.sb_create_recipeCoffee_input)

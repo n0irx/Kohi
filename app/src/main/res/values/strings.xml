@@ -19,6 +19,8 @@
     <string name="grindSize_extraCoarse">Extra Coarse</string>
     <string name="create_recipeCoffeeBlend_hint">Aceh Gayo</string>
     <string name="recipe_coffeeBlend_label">Coffee Origin/Blend</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <!-- End Create Recipe-->
 

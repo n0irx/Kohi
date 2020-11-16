@@ -10,13 +10,13 @@ import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.Step
 interface RecipeDao {
 
     @Insert
-    suspend fun insertRecipe(recipe: Recipe)
+    fun insertRecipe(recipe: Recipe)
 
     @Update
-    suspend fun updateRecipe(recipe: Recipe)
+    fun updateRecipe(recipe: Recipe)
 
     @Delete
-    suspend fun deleteRecipe(recipe: Recipe)
+    fun deleteRecipe(recipe: Recipe)
 
     @Query("SELECT * FROM recipe")
     fun getAllRecipes(): LiveData<List<Recipe>>
