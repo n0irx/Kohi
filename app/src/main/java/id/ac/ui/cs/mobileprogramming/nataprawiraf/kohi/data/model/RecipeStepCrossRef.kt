@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model
 
 import androidx.room.Entity
 

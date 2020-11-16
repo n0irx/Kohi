@@ -1,10 +1,10 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.dao
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.Recipe
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.RecipeStepCrossRef
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.Step
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeStepCrossRef
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Step
 
 @Dao
 interface RecipeDao {
