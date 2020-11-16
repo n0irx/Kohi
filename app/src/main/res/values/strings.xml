@@ -22,6 +22,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <string name="coffee_blend">咖 %s</string>
+    <string name="coffee_and_water_amount">☕ %s gr - 💧 %s ml</string>
+    <string name="preparation_time">🕑 %s</string>
+    <string name="brew_method">🛠 %s</string>
+    <string name="note">📝 %s</string>
+
     <!-- End Create Recipe-->
 
 </resources>
