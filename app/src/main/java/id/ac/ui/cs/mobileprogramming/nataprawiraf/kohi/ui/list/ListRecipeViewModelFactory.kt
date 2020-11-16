@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.viewmodel
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.list
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

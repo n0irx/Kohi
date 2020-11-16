@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.viewmodel
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

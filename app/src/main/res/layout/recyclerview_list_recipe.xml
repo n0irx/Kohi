@@ -8,7 +8,7 @@
         <import type="android.view.View" />
         <variable
             name="recipe"
-            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.model.Recipe" />
+            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe" />
     </data>
 
     <RelativeLayout

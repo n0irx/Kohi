@@ -1,4 +1,4 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.viewmodel
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,12 +8,13 @@ import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.db.repository.RecipeRepos
 
 
 class ListRecipeViewModel(private val repository: RecipeRepository): ViewModel() {
-    private lateinit var _recipes: MutableLiveData<List<Recipe>>
+//    private var _recipes: MutableLiveData<List<Recipe>> = repository.getDummyRecipeData()
+    private val _recipes = MutableLiveData<List<Recipe>>()
+
     val recipes: LiveData<List<Recipe>>
         get() = _recipes
 
-    fun getAllRecipes() {
-        val recipes = repository.getDummyRecipeData()
-        _recipes.value = recipes
+    fun setRecipes() {
+        _recipes.value = repository.getDummyRecipeData()
     }
 }
