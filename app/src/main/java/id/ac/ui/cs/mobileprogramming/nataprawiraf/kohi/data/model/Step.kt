@@ -9,5 +9,5 @@ data class Step(
     val stepId: Long,
     var name: String,
     var number: Int,
-    var timeInSeconds: Long
+    var timeInSeconds: Int
 )
