@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="recipesWithSteps"
+            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorMidnight"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/recipe_image"
+            android:layout_marginLeft="20dp"
+            android:layout_toEndOf="@id/recipe_image"
+            android:layout_marginStart="20dp">
+
+            <TextView
+                android:id="@+id/recipe_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{recipesWithSteps.recipe.name}"
+                tools:text="Gayo Madness"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/recipe_coffee_blend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/coffee_blend(recipesWithSteps.recipe.coffeeBlend)}"
+                tools:text="咖 Aceh Gayo"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_grind_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/coffee_and_water_amount(recipesWithSteps.recipe.coffeeAmount, recipesWithSteps.recipe.waterAmount)}"
+                tools:text="☕ 17 gr - 💧 210 ml"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_brew_method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/brew_method(recipesWithSteps.recipe.brewMethod)}"
+                tools:text="醸 Aero Press"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_preparation_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/preparation_time(recipesWithSteps.getPreparationTimeMinutes, recipesWithSteps.getPreparationTimeSeconds)}"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/recipe_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/note(recipesWithSteps.recipe.note)}"
+                tools:text="Fruity, citrus"
+                android:textColor="@color/colorGainsboro"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            app:imageFromUri="@{recipesWithSteps.recipe.imageSource}"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/recipe_image"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+</layout>

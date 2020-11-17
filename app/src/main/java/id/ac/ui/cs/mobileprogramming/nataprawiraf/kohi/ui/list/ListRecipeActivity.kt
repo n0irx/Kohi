@@ -1,12 +1,13 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.view
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
 
-class AddRecipeActivity : AppCompatActivity() {
+class ListRecipeActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_recipe)
+        setContentView(R.layout.activity_list_recipe)
     }
 }
