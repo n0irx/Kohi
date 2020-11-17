@@ -27,6 +27,12 @@
     <string name="preparation_time">🕑 %s minutes, and %s seconds</string>
     <string name="brew_method">🛠 %s</string>
     <string name="note">📝 %s</string>
+    <string name="save">SAVE</string>
+    <string name="recipe_preparation_time_label">Preparation Time:</string>
+    <string name="grind_size_label">Grind Size:</string>
+    <string name="brew_method_label">Brew Method</string>
+    <string name="recipe_note_hint">Fruity</string>
+    <string name="grind_size_hint">Coarse</string>
 
     <!-- End Create Recipe-->
 

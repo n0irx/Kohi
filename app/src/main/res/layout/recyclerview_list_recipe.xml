@@ -82,11 +82,10 @@
         </LinearLayout>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            app:image="@{recipesWithSteps.recipe.imageSource}"
+            app:imageFromUri="@{recipesWithSteps.recipe.imageSource}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/recipe_image"
-            android:src="@mipmap/ic_launcher"
             android:layout_centerVertical="true"
             />
     </RelativeLayout>
