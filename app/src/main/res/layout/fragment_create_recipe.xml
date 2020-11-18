@@ -58,6 +58,8 @@
                         android:layout_marginTop="10dp"
                         android:layout_width="fill_parent"
                         android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                        android:text="@{createRecipeViewModel.inputImageSource}"
+                        android:tag="@{createRecipeViewModel.inputImageSource}"
                         app:imageFromUri="@{createRecipeViewModel.inputImageSource}" />
 
                 </LinearLayout>
@@ -178,7 +180,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/tv_create_recipeCoffee_label"
+                        android:id="@+id/tv_create_coffeeAmount_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/colorTrueBlack"
@@ -188,7 +190,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/tv_create_recipeCoffee_input"
+                        android:id="@+id/et_create_coffeeAmount_input"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
@@ -202,7 +204,7 @@
                         tools:ignore="LabelFor" />
 
                     <SeekBar
-                        android:id="@+id/sb_create_recipeCoffee_input"
+                        android:id="@+id/sb_create_coffeeAmount_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:alpha="1"
@@ -237,7 +239,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/tv_create_recipeWater_input"
+                        android:id="@+id/et_create_recipeWater_input"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
@@ -284,7 +286,7 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/tv_create_recipeTemperature_input"
+                        android:id="@+id/et_create_recipeTemperature_input"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="10dp"
