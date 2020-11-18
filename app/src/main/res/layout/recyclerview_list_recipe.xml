@@ -8,6 +8,7 @@
         <variable
             name="recipesWithSteps"
             type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps" />
+        <variable name="picasso" type="com.squareup.picasso.Picasso"/>
     </data>
 
     <RelativeLayout

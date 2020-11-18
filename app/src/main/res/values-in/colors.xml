@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#202020</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#FF7F74</color>
+
+    <!--custom-->
+    <color name="colorPitchBlack">#000000</color>
+    <color name="colorOffBlack">#202020</color>
+    <color name="colorMidnight">#171717</color>
+    <color name="colorTrueBlack">#202020</color>
+
+    <color name="colorStorm">#666666</color>
+    <color name="colorSmoke">#999999</color>
+    <color name="colorGainsboro">#DEDEDE</color>
+
+    <color name="colorNero">#282828</color>
+    <color name="colorLightRed">#FF7F74</color>
+    <color name="colorBluePrimary">#3F82EF</color>
+
+</resources>
