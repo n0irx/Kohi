@@ -81,5 +81,9 @@ dependencies {
 
     // spinner for timer
     implementation 'me.zhanghai.android.materialprogressbar:library:1.6.1'
+
+    //
+    implementation 'androidx.preference:preference:1.1.1'
+
 }
 

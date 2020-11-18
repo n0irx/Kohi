@@ -398,6 +398,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:text="@={detailRecipeViewModel.preparationTimeTextView}"
                     tools:text="3:20"
                     android:textColor="@color/colorGainsboro"
                     android:textSize="80sp"

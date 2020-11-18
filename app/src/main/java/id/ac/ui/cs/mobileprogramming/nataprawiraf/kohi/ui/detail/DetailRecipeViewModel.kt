@@ -24,6 +24,16 @@ class DetailRecipeViewModel(private val repository: RecipeRepository): ViewModel
     var preparationTimeMinutes = MutableLiveData("0")
     var preparationTimeSeconds = MutableLiveData("0")
 
+    var _preparationTimeTextView: MutableLiveData<String> = MutableLiveData("${preparationTimeMinutes.value}:${preparationTimeSeconds.value}")
+
+    var preparationTimeTextView: MutableLiveData<String>
+        get() = _preparationTimeTextView
+        set(value) {
+            _preparationTimeTextView = value
+        }
+
+
+
     fun setRecipeWithSteps(recipeWithSteps: RecipeWithSteps) {
         name.value = recipeWithSteps.recipe.name
         coffeeAmount.value = recipeWithSteps.recipe.coffeeAmount.toString()
