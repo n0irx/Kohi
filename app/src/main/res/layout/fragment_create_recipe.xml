@@ -58,8 +58,6 @@
                         android:layout_marginTop="10dp"
                         android:layout_width="fill_parent"
                         android:src="@drawable/ic_baseline_add_photo_alternate_24"
-                        android:text="@{createRecipeViewModel.inputImageSource}"
-                        android:tag="@{createRecipeViewModel.inputImageSource}"
                         app:imageFromUri="@{createRecipeViewModel.inputImageSource}" />
 
                 </LinearLayout>
@@ -473,7 +471,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-                    android:onClick="@{()->createRecipeViewModel.save()}"
                     android:text="@string/save" />
                 <!--End of Submit Button-->
 
