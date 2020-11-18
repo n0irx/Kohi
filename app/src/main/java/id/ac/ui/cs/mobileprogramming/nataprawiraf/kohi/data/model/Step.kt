@@ -2,6 +2,7 @@ package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "step")
 data class Step(
@@ -10,4 +11,4 @@ data class Step(
     var name: String,
     var number: Int,
     var timeInSeconds: Int
-)
+): Serializable
