@@ -1,19 +1,27 @@
 package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.detail
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.provider.AlarmClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.RecipeDatabase
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.databinding.FragmentDetailRecipeBinding
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.receiver.TimerExpiredReceiver
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.utils.PrefUtils
 import kotlinx.android.synthetic.main.fragment_detail_recipe.*
+import java.util.*
 
 
 class DetailRecipeFragment : Fragment() {
@@ -64,15 +72,17 @@ class DetailRecipeFragment : Fragment() {
         super.onResume()
 
         initTimer()
-
-        // TODO remove background timer, hide notification
+        activity?.let { removeAlarm(it) }
+        //hide notification
     }
 
+    @RequiresApi(Build.VERSION_CODES.KITKAT)
     override fun onPause() {
         super.onPause()
         if (timerState == TimerState.Running) {
             timer.cancel()
-            // start background timer and show notficitaion
+            val wakeUpTime = activity?.let { setAlarm(it, nowSeconds, secondsRemaining) }
+            // todo: show notification
         } else if (timerState == TimerState.Paused){
             //show notification
         }
@@ -115,9 +125,13 @@ class DetailRecipeFragment : Fragment() {
         else
             timerLengthSeconds
 
-        // change seconds remaining according to where the background timer stopped
+        val alarmSetTime = PrefUtils.getAlarmSetTime(requireActivity())
 
-        if (timerState == TimerState.Running) {
+        if (alarmSetTime > 0) secondsRemaining -= nowSeconds - alarmSetTime
+
+        if (secondsRemaining <= 0) {
+            onTimerFinished()
+        } else if (timerState == TimerState.Running) {
             startTimer()
         }
 
@@ -193,6 +207,29 @@ class DetailRecipeFragment : Fragment() {
         }
     }
 
+    companion object {
+        @RequiresApi(Build.VERSION_CODES.KITKAT)
+        fun setAlarm(context: Context, nowSeconds: Long, secondsRemaining: Long): Long {
+            val wakeUpTime = (nowSeconds + secondsRemaining) * 1000
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            val intent = Intent(context, TimerExpiredReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, wakeUpTime, pendingIntent)
+            PrefUtils.setAlarmSetTime(nowSeconds, context)
 
+            return wakeUpTime
+        }
+
+        fun removeAlarm(context: Context) {
+            val intent = Intent(context, TimerExpiredReceiver::class.java)
+            val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
+            val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+            alarmManager.cancel(pendingIntent)
+            PrefUtils.setAlarmSetTime(0, context)
+        }
+
+        val nowSeconds: Long
+            get() = Calendar.getInstance().timeInMillis / 1000
+    }
 
 }
