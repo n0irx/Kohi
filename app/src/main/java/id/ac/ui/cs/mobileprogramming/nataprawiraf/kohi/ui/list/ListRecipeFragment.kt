@@ -12,9 +12,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.RecipeDatabase
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.create.CreateRecipeActivity
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.detail.DetailRecipeActivity
 import kotlinx.android.synthetic.main.fragment_list_recipe.*
 
 class ListRecipeFragment : Fragment(), ListRecipeAdapter.OnRecipeCickListener {
@@ -51,7 +53,10 @@ class ListRecipeFragment : Fragment(), ListRecipeAdapter.OnRecipeCickListener {
     }
 
     override fun onRecipeClick(position: Int) {
-        val clickedItem: RecipeWithSteps = viewModel.recipesWithSteps.value?.get(position)!!
-        Toast.makeText(activity, "Recipe ${clickedItem.recipe.name} clicked", Toast.LENGTH_SHORT).show()
+        val clickedRecipe: RecipeWithSteps = viewModel.recipesWithSteps.value?.get(position)!!
+        val intent = Intent(activity, DetailRecipeActivity::class.java)
+        intent.putExtra("recipeWithSteps", clickedRecipe)
+        startActivity(intent)
     }
 }
+

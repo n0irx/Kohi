@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Kōhī</string>
-
-    <!-- Start Create Recipe-->
     <string name="recipe_create_title">Add New Recipe</string>
     <string name="recipe_name_label">Recipe Name:</string>
     <string name="recipe_name_input">e.g Gayo Madness</string>
@@ -19,9 +17,7 @@
     <string name="grindSize_extraCoarse">Extra Coarse</string>
     <string name="create_recipeCoffeeBlend_hint">Aceh Gayo</string>
     <string name="recipe_coffeeBlend_label">Coffee Origin/Blend</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="coffee_blend">咖 %s</string>
     <string name="coffee_and_water_amount">☕ %s gr - 💧 %s ml</string>
     <string name="preparation_time">🕑 %s minutes, and %s seconds</string>
@@ -33,7 +29,5 @@
     <string name="brew_method_label">Brew Method</string>
     <string name="recipe_note_hint">Fruity</string>
     <string name="grind_size_hint">Coarse</string>
-
-    <!-- End Create Recipe-->
-
+    <string name="start_brew_label">Brew!</string>
 </resources>

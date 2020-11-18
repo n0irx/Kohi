@@ -1,24 +1,22 @@
 package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.create
 
-import android.R.attr.data
 import android.content.Intent
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
-import androidx.core.app.ActivityCompat
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.RecipeDatabase
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Step
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.databinding.FragmentCreateRecipeBinding
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.list.ListRecipeActivity
 import kotlinx.android.synthetic.main.fragment_create_recipe.*
-import kotlinx.android.synthetic.main.fragment_list_recipe.*
 
 
 class CreateRecipeFragment : Fragment() {
@@ -55,15 +53,15 @@ class CreateRecipeFragment : Fragment() {
         binding.createRecipeViewModel = viewModel
 
         // Coffee weight field
-        sb_create_recipeCoffee_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
-        sb_create_recipeCoffee_input.setOnSeekBarChangeListener(object :
+        sb_create_coffeeAmount_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
+        sb_create_coffeeAmount_input.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(
                 coffeeSeekBar: SeekBar,
                 progress: Int, fromUser: Boolean
             ) {
                 val progressCustom = minWeightInGram + (progress * stepInGram)
-                tv_create_recipeCoffee_input.setText("$progressCustom")
+                et_create_coffeeAmount_input.setText("$progressCustom")
             }
 
             override fun onStartTrackingTouch(coffeeSeekBar: SeekBar) {}
@@ -79,7 +77,7 @@ class CreateRecipeFragment : Fragment() {
                 progress: Int, fromUser: Boolean
             ) {
                 val progressCustom = minWeightInGram + (progress * stepInGram)
-                tv_create_recipeWater_input.setText("$progressCustom")
+                et_create_recipeWater_input.setText("$progressCustom")
             }
 
             override fun onStartTrackingTouch(waterSeekBar: SeekBar) {}
@@ -95,7 +93,7 @@ class CreateRecipeFragment : Fragment() {
                 progress: Int, fromUser: Boolean
             ) {
                 val progressCustom = minDegreeInCelsius + (progress * stepInCelsius)
-                tv_create_recipeTemperature_input.setText("$progressCustom")
+                et_create_recipeTemperature_input.setText("$progressCustom")
             }
 
             override fun onStartTrackingTouch(temperatureSeekBar: SeekBar) {}
@@ -103,8 +101,14 @@ class CreateRecipeFragment : Fragment() {
         })
 
         recipe_image.setOnClickListener {
-            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+            val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             startActivityForResult(gallery, 100)
+        }
+
+        btn_create_submit_recipe.setOnClickListener {
+            viewModel.save()
+            val intent = Intent(activity, ListRecipeActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -117,5 +121,4 @@ class CreateRecipeFragment : Fragment() {
             }
         }
     }
-
 }

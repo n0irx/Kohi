@@ -2,6 +2,7 @@ package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "recipe")
 data class Recipe(
@@ -16,4 +17,4 @@ data class Recipe(
     var waterTemperature: Int,
     var imageSource: String,
     var note: String
-)
+) : Serializable
