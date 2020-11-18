@@ -6,16 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.RecipeDatabase
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.create.CreateRecipeActivity
 import kotlinx.android.synthetic.main.fragment_list_recipe.*
 
-class ListRecipeFragment : Fragment() {
+class ListRecipeFragment : Fragment(), ListRecipeAdapter.OnRecipeCickListener {
 
     private lateinit var factory: ListRecipeViewModelFactory
     private lateinit var viewModel: ListRecipeViewModel
@@ -37,7 +39,7 @@ class ListRecipeFragment : Fragment() {
             rv_list_recipe.also {
                 it.layoutManager = LinearLayoutManager(requireContext())
                 it.setHasFixedSize(true)
-                it.adapter = ListRecipeAdapter(recipesWithSteps)
+                it.adapter = ListRecipeAdapter(recipesWithSteps, this)
             }
         })
 
@@ -46,5 +48,10 @@ class ListRecipeFragment : Fragment() {
             activity?.startActivity(intent)
             activity?.finish()
         })
+    }
+
+    override fun onRecipeClick(position: Int) {
+        val clickedItem: RecipeWithSteps = viewModel.recipesWithSteps.value?.get(position)!!
+        Toast.makeText(activity, "Recipe ${clickedItem.recipe.name} clicked", Toast.LENGTH_SHORT).show()
     }
 }
