@@ -7,7 +7,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.provider.AlarmClock
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,8 @@ import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithStep
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.databinding.FragmentDetailRecipeBinding
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.receiver.TimerExpiredReceiver
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.utils.PrefUtils
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.service.TimerExpiredNotifService
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.util.PrefUtil
 import kotlinx.android.synthetic.main.fragment_detail_recipe.*
 import java.util.*
 
@@ -29,15 +29,6 @@ class DetailRecipeFragment : Fragment() {
     private lateinit var factory: DetailRecipeViewModelFactory
     private lateinit var viewModel: DetailRecipeViewModel
     private lateinit var binding: FragmentDetailRecipeBinding
-
-    enum class TimerState {
-        Stopped, Paused, Running
-    }
-
-    private lateinit var timer: CountDownTimer
-    private var timerLengthSeconds: Long = 0L
-    private var timerState = TimerState.Stopped
-    private var secondsRemaining = 0L
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -61,9 +52,7 @@ class DetailRecipeFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.detailRecipeViewModel = viewModel
 
-        if (recipeWithStep != null) {
-            viewModel.setRecipeWithSteps(recipeWithStep)
-        }
+        if (recipeWithStep != null) viewModel.setRecipeWithSteps(recipeWithStep)
 
         initTimerActions()
     }
@@ -87,10 +76,20 @@ class DetailRecipeFragment : Fragment() {
             //show notification
         }
 
-        activity?.let { PrefUtils.setPreviousTimerLengthSeconds(timerLengthSeconds, it) }
-        activity?.let { PrefUtils.setSecondsRemaining(secondsRemaining, it) }
-        activity?.let { PrefUtils.setTimerState(timerState, it) }
+        activity?.let { PrefUtil.setPreviousTimerLengthSeconds(timerLengthSeconds, it) }
+        activity?.let { PrefUtil.setSecondsRemaining(secondsRemaining, it) }
+        activity?.let { PrefUtil.setTimerState(timerState, it) }
     }
+
+    // Timer Section
+    enum class TimerState {
+        Stopped, Paused, Running
+    }
+
+    private lateinit var timer: CountDownTimer
+    private var timerLengthSeconds: Long = 0L
+    private var timerState = TimerState.Stopped
+    private var secondsRemaining = 0L
 
     private fun initTimerActions() {
         btn_play_recipe_timer.setOnClickListener {
@@ -106,26 +105,30 @@ class DetailRecipeFragment : Fragment() {
         }
 
         btn_stop_recipe_timer.setOnClickListener {
-            timer.cancel()
-            onTimerFinished()
+            if (this::timer.isInitialized) {
+                timer.cancel()
+                onTimerFinished()
+            } else {
+                setNewTimerLength()
+            }
         }
     }
 
     private fun initTimer() {
-        timerState = activity?.let { PrefUtils.getTimerState(it) }!!
+        timerState = activity?.let { PrefUtil.getTimerState(it) }!!
 
-        if (timerState == TimerState.Stopped) {
+        if (timerState == TimerState.Stopped || timerState == TimerState.Paused) {
             setNewTimerLength()
         } else {
             setPreviousTimerLength()
         }
 
         secondsRemaining = if (timerState == TimerState.Running || timerState == TimerState.Paused)
-            PrefUtils.getSecondsRemaining(requireActivity())
+            PrefUtil.getSecondsRemaining(requireActivity())
         else
             timerLengthSeconds
 
-        val alarmSetTime = PrefUtils.getAlarmSetTime(requireActivity())
+        val alarmSetTime = PrefUtil.getAlarmSetTime(requireActivity())
 
         if (alarmSetTime > 0) secondsRemaining -= nowSeconds - alarmSetTime
 
@@ -144,13 +147,14 @@ class DetailRecipeFragment : Fragment() {
 
         setNewTimerLength()
 
-//        progress
-
-        activity?.let { PrefUtils.setSecondsRemaining(timerLengthSeconds, it) }
+        activity?.let { PrefUtil.setSecondsRemaining(timerLengthSeconds, it) }
         secondsRemaining = timerLengthSeconds
 
         updateButtons()
         updateCountDownUI()
+
+        val intent = Intent(context, TimerExpiredNotifService::class.java)
+        activity?.startService(intent)
     }
 
     private fun startTimer() {
@@ -166,18 +170,17 @@ class DetailRecipeFragment : Fragment() {
     }
 
     private fun setNewTimerLength() {
-       val lengthInMinutes = activity?.let { PrefUtils.getTimerLength(it) }
-        if (lengthInMinutes != null) {
-            timerLengthSeconds = (lengthInMinutes * 60L)
-//            timerLengthSeconds = (viewModel.preparationTimeMinutes.value?.toLong() ?: 0) * 60 + (viewModel.preparationTimeSeconds.value?.toLong()
-//                ?: 0)
+       val lengthInSeconds: Long? = activity?.let { PrefUtil.getTimerLength(it, viewModel.getTotalPreparationTimeInSeconds()) }
+        if (lengthInSeconds != null) {
+            timerLengthSeconds = lengthInSeconds
         }
     }
 
     private fun setPreviousTimerLength() {
-        timerLengthSeconds = activity?.let { PrefUtils.getPreviousTimerLengthSeconds(it) }!!
-//        timerLengthSeconds = (viewModel.preparationTimeMinutes.value?.toLong() ?: 0) * 60 + (viewModel.preparationTimeSeconds.value?.toLong()
-//                ?: 0)
+        val lengthInSeconds: Long? = activity?.let { PrefUtil.getTimerLength(it, viewModel.getTotalPreparationTimeInSeconds()) }
+        if (lengthInSeconds != null) {
+            timerLengthSeconds = lengthInSeconds
+        }
     }
 
     private fun updateCountDownUI() {
@@ -208,6 +211,10 @@ class DetailRecipeFragment : Fragment() {
     }
 
     companion object {
+
+        val nowSeconds: Long
+            get() = Calendar.getInstance().timeInMillis / 1000
+
         @RequiresApi(Build.VERSION_CODES.KITKAT)
         fun setAlarm(context: Context, nowSeconds: Long, secondsRemaining: Long): Long {
             val wakeUpTime = (nowSeconds + secondsRemaining) * 1000
@@ -215,8 +222,7 @@ class DetailRecipeFragment : Fragment() {
             val intent = Intent(context, TimerExpiredReceiver::class.java)
             val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, wakeUpTime, pendingIntent)
-            PrefUtils.setAlarmSetTime(nowSeconds, context)
-
+            PrefUtil.setAlarmSetTime(nowSeconds, context)
             return wakeUpTime
         }
 
@@ -225,11 +231,9 @@ class DetailRecipeFragment : Fragment() {
             val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             alarmManager.cancel(pendingIntent)
-            PrefUtils.setAlarmSetTime(0, context)
+            PrefUtil.setAlarmSetTime(0, context)
         }
 
-        val nowSeconds: Long
-            get() = Calendar.getInstance().timeInMillis / 1000
-    }
+    } // end of companion object
 
-}
+} // end of Detail Recipe Fragment class

@@ -3,14 +3,25 @@ package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.receiver
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import android.util.Log
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.service.TimerExpiredNotifService
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.detail.DetailRecipeFragment
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.utils.PrefUtils
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.util.PrefUtil
 
 class TimerExpiredReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        PrefUtils.setTimerState(DetailRecipeFragment.TimerState.Stopped, context)
-        PrefUtils.setAlarmSetTime(0, context)
+        PrefUtil.setTimerState(DetailRecipeFragment.TimerState.Stopped, context)
+        PrefUtil.setAlarmSetTime(0, context)
+        Log.i("BROADCAST", "RECEIVED")
+
+        val intent = Intent(context, TimerExpiredNotifService::class.java)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            context.startForegroundService(intent)
+        } else {
+            context.startService(intent)
+        }
     }
 }

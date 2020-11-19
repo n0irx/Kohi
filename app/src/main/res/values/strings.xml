@@ -30,4 +30,5 @@
     <string name="recipe_note_hint">Fruity</string>
     <string name="grind_size_hint">Coarse</string>
     <string name="start_brew_label">Brew!</string>
+    <string name="notification_label">Brewing Finished</string>
 </resources>
