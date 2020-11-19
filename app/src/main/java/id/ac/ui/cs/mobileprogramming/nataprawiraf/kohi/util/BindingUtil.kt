@@ -1,12 +1,9 @@
-package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.utils
+package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.util
 
-import android.icu.number.NumberFormatter.with
 import android.net.Uri
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
 
 @BindingAdapter("imageFromUri")
 fun loadImage(view: ImageView, url: String) {

@@ -1,13 +1,9 @@
 package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.detail
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
-import kotlinx.coroutines.launch
 
 
 class DetailRecipeViewModel(private val repository: RecipeRepository): ViewModel() {
@@ -23,6 +19,18 @@ class DetailRecipeViewModel(private val repository: RecipeRepository): ViewModel
     var recipeNote = MutableLiveData("")
     var preparationTimeMinutes = MutableLiveData("0")
     var preparationTimeSeconds = MutableLiveData("0")
+
+    private var _preparationTimeTextView: MutableLiveData<String> = MutableLiveData("${preparationTimeMinutes.value}:${preparationTimeSeconds.value}")
+
+    var preparationTimeTextView: MutableLiveData<String>
+        get() = _preparationTimeTextView
+        set(value) {
+            _preparationTimeTextView = value
+        }
+
+    fun getTotalPreparationTimeInSeconds(): Long {
+        return preparationTimeSeconds.value?.toLong()!! + preparationTimeMinutes.value?.toLong()!! * 60
+    }
 
     fun setRecipeWithSteps(recipeWithSteps: RecipeWithSteps) {
         name.value = recipeWithSteps.recipe.name

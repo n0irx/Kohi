@@ -3,7 +3,8 @@
     package="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,6 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".service.TimerExpiredNotifService"
+            android:enabled="true"
+            android:exported="false"></service>
+
+        <receiver
+            android:name=".receiver.TimerExpiredReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
         <activity
             android:name=".ui.list.ListRecipeActivity"
             android:configChanges="orientation|screenSize">
