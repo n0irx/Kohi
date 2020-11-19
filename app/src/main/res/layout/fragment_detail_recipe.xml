@@ -57,7 +57,9 @@
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_width="fill_parent"
-                        app:imageFromUri="@{detailRecipeViewModel.imageSource}" />
+                        app:imageFromUri="@{detailRecipeViewModel.imageSource}"
+                        app:placeholder="@{@drawable/ic_baseline_insert_photo_24}"
+                        />
 
                 </LinearLayout>
                 <!--End of Recipe Image-->

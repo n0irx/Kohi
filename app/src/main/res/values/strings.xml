@@ -31,4 +31,9 @@
     <string name="grind_size_hint">Coarse</string>
     <string name="start_brew_label">Brew!</string>
     <string name="notification_label">Brewing Finished</string>
+    <string name="create_recipeBrewMethod_hint">Aero Press</string>
+    <string name="recipe_note_label">Notes:</string>
+    <string name="list_recipe_label">List Recipe</string>
+    <string name="create_recipe_label">Add New Recipe</string>
+    <string name="detail_recipe_label">Detail Recipe</string>
 </resources>
