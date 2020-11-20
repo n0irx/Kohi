@@ -14,7 +14,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.RecipeDatabase
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.KohiDatabase
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.databinding.FragmentDetailRecipeBinding
@@ -42,7 +42,7 @@ class DetailRecipeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val dao = RecipeDatabase.getInstance(requireActivity()).recipeDao
+        val dao = KohiDatabase.getInstance(requireActivity()).recipeDao
         val repository = RecipeRepository(dao)
 
         val recipeWithStep: RecipeWithSteps? = activity?.intent?.getSerializableExtra("recipeWithSteps") as? RecipeWithSteps
@@ -155,7 +155,6 @@ class DetailRecipeFragment : Fragment() {
         updateCountDownUI()
 
         val intent = Intent(context, TimerExpiredNotifService::class.java)
-        intent.putExtra("kohiMessage",  context?.getString(R.string.notification_label))
         activity?.startService(intent)
     }
 
@@ -222,7 +221,6 @@ class DetailRecipeFragment : Fragment() {
             val wakeUpTime = (nowSeconds + secondsRemaining) * 1000
             val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val intent = Intent(context, TimerExpiredReceiver::class.java)
-            intent.putExtra("kohiMessage",  context.getString(R.string.notification_label))
             val pendingIntent = PendingIntent.getBroadcast(context, 0, intent, 0)
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, wakeUpTime, pendingIntent)
             PrefUtil.setAlarmSetTime(nowSeconds, context)

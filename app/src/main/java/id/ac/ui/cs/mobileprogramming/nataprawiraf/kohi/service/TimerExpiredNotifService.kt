@@ -1,6 +1,5 @@
 package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.service
 
-import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.Service
@@ -8,7 +7,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.IBinder
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
@@ -20,7 +18,6 @@ class TimerExpiredNotifService : Service() {
         private const val NOTIFICATION_ID = 200
     }
 
-    private lateinit var message: String
     private lateinit var context: Context
 
     override fun onBind(intent: Intent): IBinder? {
@@ -33,19 +30,15 @@ class TimerExpiredNotifService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent != null) {
-            message = intent.getStringExtra("kohiMessage") ?: ""
-        }
         createNotificationChannel()
         sendNotification()
-        Log.i("TIMER_TAG", "SENDIN NOTIFICATION")
         return super.onStartCommand(intent, flags, startId)
     }
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val name = "Kohi Timer Notification"
-            val descriptionText = "Kohi Timer Notification"
+            val name = getString(R.string.notification_name)
+            val descriptionText = getString(R.string.notification_description)
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
@@ -59,7 +52,7 @@ class TimerExpiredNotifService : Service() {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
             .setContentTitle(getString(R.string.app_name))
-            .setContentText(message)
+            .setContentText(getString(R.string.notification_label))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(context)) {

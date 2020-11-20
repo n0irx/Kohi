@@ -15,10 +15,7 @@ class TimerExpiredReceiver : BroadcastReceiver() {
         PrefUtil.setTimerState(DetailRecipeFragment.TimerState.Stopped, context)
         PrefUtil.setAlarmSetTime(0, context)
 
-        Log.i("BROADCAST", "RECEIVED")
-
         val toServiceIntent = Intent(context, TimerExpiredNotifService::class.java)
-        toServiceIntent.putExtra("kohiMessage", intent.getStringExtra("kohiMessage"))
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(toServiceIntent)
