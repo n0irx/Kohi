@@ -14,20 +14,20 @@ import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.TastingNote
     Step::class,
     TastingNote::class
 ], version = 1, exportSchema = false)
-abstract class RecipeDatabase: RoomDatabase() {
+abstract class KohiDatabase: RoomDatabase() {
 
     abstract val recipeDao: RecipeDao
 
     companion object {
         @Volatile
-        private var INSTANCE: RecipeDatabase? = null
-        fun getInstance(context: Context): RecipeDatabase {
+        private var INSTANCE: KohiDatabase? = null
+        fun getInstance(context: Context): KohiDatabase {
             synchronized(this) {
-                var instance: RecipeDatabase? = INSTANCE
+                var instance: KohiDatabase? = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        RecipeDatabase::class.java,
+                        KohiDatabase::class.java,
                         "recipe_database"
                     ).build()
                 }
