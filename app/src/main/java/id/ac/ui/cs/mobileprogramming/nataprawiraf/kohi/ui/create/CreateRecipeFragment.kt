@@ -53,15 +53,15 @@ class CreateRecipeFragment : Fragment() {
         binding.createRecipeViewModel = viewModel
 
         // Coffee weight field
-        sb_create_coffeeAmount_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
-        sb_create_coffeeAmount_input.setOnSeekBarChangeListener(object :
+        sb_create_coffee_amount_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
+        sb_create_coffee_amount_input.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(
                 coffeeSeekBar: SeekBar,
                 progress: Int, fromUser: Boolean
             ) {
                 val progressCustom = minWeightInGram + (progress * stepInGram)
-                et_create_coffeeAmount_input.setText("$progressCustom")
+                et_create_coffee_amount_input.setText("$progressCustom")
             }
 
             override fun onStartTrackingTouch(coffeeSeekBar: SeekBar) {}
@@ -69,15 +69,15 @@ class CreateRecipeFragment : Fragment() {
         })
 
         // Water weight field
-        sb_create_recipeWater_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
-        sb_create_recipeWater_input.setOnSeekBarChangeListener(object :
+        sb_create_recipe_water_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
+        sb_create_recipe_water_input.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(
                 waterSeekBar: SeekBar,
                 progress: Int, fromUser: Boolean
             ) {
                 val progressCustom = minWeightInGram + (progress * stepInGram)
-                et_create_recipeWater_input.setText("$progressCustom")
+                et_create_recipe_water_input.setText("$progressCustom")
             }
 
             override fun onStartTrackingTouch(waterSeekBar: SeekBar) {}
@@ -85,15 +85,15 @@ class CreateRecipeFragment : Fragment() {
         })
 
         // Water temperature weight field
-        sb_create_recipeTemperature_input!!.max = (maxDegreeInCelsius - minDegreeInCelsius) / stepInCelsius
-        sb_create_recipeTemperature_input.setOnSeekBarChangeListener(object :
+        sb_create_recipe_temperature_input!!.max = (maxDegreeInCelsius - minDegreeInCelsius) / stepInCelsius
+        sb_create_recipe_temperature_input.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(
                 temperatureSeekBar: SeekBar,
                 progress: Int, fromUser: Boolean
             ) {
                 val progressCustom = minDegreeInCelsius + (progress * stepInCelsius)
-                et_create_recipeTemperature_input.setText("$progressCustom")
+                et_create_recipe_temperature_input.setText("$progressCustom")
             }
 
             override fun onStartTrackingTouch(temperatureSeekBar: SeekBar) {}

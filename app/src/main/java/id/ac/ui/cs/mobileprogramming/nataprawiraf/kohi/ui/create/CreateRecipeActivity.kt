@@ -11,7 +11,7 @@ class CreateRecipeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title = "${getString(R.string.app_name)} | ${getString(R.string.create_recipe_label)}"
+        title = "${getString(R.string.app_name)} | ${getString(R.string.create_recipe_title)}"
         setContentView(R.layout.activity_create_recipe)
     }
 

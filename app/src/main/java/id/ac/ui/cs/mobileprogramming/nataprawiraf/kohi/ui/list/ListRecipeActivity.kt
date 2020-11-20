@@ -10,7 +10,7 @@ class ListRecipeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        title = "${getString(R.string.app_name)} | ${getString(R.string.list_recipe_label)}"
+        title = "${getString(R.string.app_name)} | ${getString(R.string.list_recipe_title)}"
         setContentView(R.layout.activity_list_recipe)
     }
 
@@ -24,6 +24,6 @@ class ListRecipeActivity : AppCompatActivity() {
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show()
 
-        Handler().postDelayed(Runnable { doubleBackToExitPressedOnce = false }, 2000)
+        Handler().postDelayed({ doubleBackToExitPressedOnce = false }, 2000)
     }
 }
