@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="createRecipeViewModel"
+            type="id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.create.CreateRecipeViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#161616"
+        android:orientation="vertical"
+        tools:context=".ui.create.CreateRecipeActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorMidnight"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <!--Start of Recipe Image-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_height="120dp"
+                        android:id="@+id/recipe_image"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="fill_parent"
+                        app:imageFromUri="@{createRecipeViewModel.inputImageSource}"
+                        app:placeholder="@{@drawable/ic_baseline_add_photo_alternate_48}" />
+
+                </LinearLayout>
+                <!--End of Recipe Image-->
+
+                <!--Start of Recipe Name-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_name_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_name_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipe_name_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@color/colorTrueBlack"
+                        android:ems="10"
+                        android:hint="@string/create_recipe_name_hint"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorStorm"
+                        android:text="@={createRecipeViewModel.inputName}"
+                        android:textColor="@color/colorSmoke"
+                        android:textColorHint="@color/colorStorm"
+                        android:textSize="18sp" />
+                </LinearLayout>
+                <!--End of Recipe Name-->
+
+                <!--Start Coffee Origin/Blend-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_coffee_blend_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_coffee_blend_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipe_coffee_blend_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={createRecipeViewModel.inputCoffeeBlend}"
+                        android:autofillHints=""
+                        android:background="@color/colorTrueBlack"
+                        android:ems="10"
+                        android:hint="@string/create_recipe_coffee_blend_hint"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorStorm"
+                        android:textColor="@color/colorSmoke"
+                        android:textColorHint="@color/colorStorm"
+                        android:textSize="18sp" />
+                </LinearLayout>
+                <!-- End of Coffee Origin/Blend-->
+
+                <!--Start of Brew Method-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_brewMethod_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_brew_method_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipe_brew_method_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@={createRecipeViewModel.inputBrewMethod}"
+                        android:autofillHints=""
+                        android:background="@color/colorTrueBlack"
+                        android:ems="10"
+                        android:hint="@string/create_recipe_brew_method_hint"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorStorm"
+                        android:textColor="@color/colorSmoke"
+                        android:textColorHint="@color/colorStorm"
+                        android:textSize="18sp" />
+                </LinearLayout>
+                <!--End of Brew Method-->
+
+                <!--Start of Coffee Amount-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTrueBlack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_coffee_amount_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_coffee_amount_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_coffee_amount_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:text="@={createRecipeViewModel.inputCoffeeAmount}"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="15sp"
+                        tools:ignore="LabelFor" />
+
+                    <SeekBar
+                        android:id="@+id/sb_create_coffee_amount_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="1"
+                        android:background="@color/colorTrueBlack"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:padding="10dp"
+                        android:progress="0" />
+
+                </LinearLayout>
+                <!--End of Coffee Amount-->
+
+                <!--Start of Water-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTrueBlack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_water_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_water_amount_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipe_water_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:text="@={createRecipeViewModel.inputWaterAmount}"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="15sp"
+                        tools:ignore="LabelFor" />
+
+                    <SeekBar
+                        android:id="@+id/sb_create_recipe_water_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="1"
+                        android:background="@color/colorTrueBlack"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:padding="10dp"
+                        android:progress="0" />
+
+                </LinearLayout>
+                <!--End of Water-->
+
+                <!--Start of Temperatur-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTrueBlack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_temperature_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_temperature_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipe_temperature_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="10dp"
+                        android:autofillHints=""
+                        android:background="@null"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:text="@={createRecipeViewModel.inputWaterTemperature}"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="15sp"
+                        tools:ignore="LabelFor" />
+
+                    <SeekBar
+                        android:id="@+id/sb_create_recipe_temperature_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:alpha="1"
+                        android:background="@color/colorTrueBlack"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:padding="10dp"
+                        android:progress="0" />
+                </LinearLayout>
+                <!--End of Temperatur-->
+
+                <!--Start of Grind Size-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_grind_size_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_grind_size_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipe_grind_size_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@color/colorTrueBlack"
+                        android:ems="10"
+                        android:hint="@string/create_recipe_grind_size_hint"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorStorm"
+                        android:text="@={createRecipeViewModel.inputGrindSize}"
+                        android:textColor="@color/colorSmoke"
+                        android:textColorHint="@color/colorStorm"
+                        android:textSize="18sp"
+                        tools:ignore="TextFields" />
+
+                </LinearLayout>
+                <!-- End of Grind Size-->
+
+                <!--Start of Coffee Note-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_note_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_note_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/et_create_recipeNote_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:background="@color/colorTrueBlack"
+                        android:ems="10"
+                        android:hint="@string/create_recipe_note_hint"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorStorm"
+                        android:text="@={createRecipeViewModel.inputRecipeNote}"
+                        android:textColor="@color/colorSmoke"
+                        android:textColorHint="@color/colorStorm"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+                <!--End of Coffee Note-->
+
+                <!--Start of Preparation Time-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorTrueBlack"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_create_recipe_preparation_time_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTrueBlack"
+                        android:padding="10dp"
+                        android:text="@string/recipe_preparation_time_label"
+                        android:textColor="@color/colorGainsboro"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent">
+
+                        <EditText
+                            android:id="@+id/minutes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@color/colorGainsboro"
+                            android:inputType="time"
+                            android:gravity="center"
+                            android:backgroundTint="@color/colorGainsboro"
+                            android:text="@={createRecipeViewModel.inputPreparationTimeMinutes}"
+                            android:layout_gravity="center"
+                            android:autofillHints="" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorGainsboro"
+                            android:text="@string/create_recipe_preparation_time_minutes"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent">
+
+                        <EditText
+                            android:id="@+id/seconds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:textColor="@color/colorGainsboro"
+                            android:backgroundTint="@color/colorGainsboro"
+                            android:text="@={createRecipeViewModel.inputPreparationTimeSeconds}"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:inputType="time"
+                            android:autofillHints="" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/colorGainsboro"
+                            android:text="@string/create_recipe_preparation_time_seconds"
+                            android:gravity="center"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <!--Start of Preparation Time-->
+
+                <!--Submit Button-->
+                <Button
+                    android:id="@+id/btn_create_submit_recipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="@string/save" />
+                <!--End of Submit Button-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
