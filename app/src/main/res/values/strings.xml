@@ -40,7 +40,7 @@
     <string name="start_brew_label">Brew!</string>
 
     <!--Button Lables-->
-    <string name="save">SAVE</string>
+    <string name="save">Save</string>
 
     <!--List Recipe Fields Format-->
     <string name="coffee_blend">咖 %s</string>
