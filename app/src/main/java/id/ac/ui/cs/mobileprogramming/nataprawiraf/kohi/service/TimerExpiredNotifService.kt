@@ -45,7 +45,7 @@ class TimerExpiredNotifService : Service() {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Kohi Timer Notification"
-            val descriptionText = "Kohi Timer Expired Notification"
+            val descriptionText = "Kohi Timer Notification"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
