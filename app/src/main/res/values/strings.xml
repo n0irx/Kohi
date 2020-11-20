@@ -1,39 +1,53 @@
 <resources>
+
+    <!--general-->
     <string name="app_name">Kōhī</string>
-    <string name="recipe_create_title">Add New Recipe</string>
+
+    <!--title-->
+    <string name="create_recipe_title">Add New Recipe</string>
+    <string name="detail_recipe_title">Detail Recipe</string>
+    <string name="list_recipe_title">List Recipe</string>
+
+    <!--Create Recipe Fields-->
     <string name="recipe_name_label">Recipe Name:</string>
-    <string name="recipe_name_input">e.g Gayo Madness</string>
-    <string name="recipe_coffee_label">Coffee (gr):</string>
-    <string name="recipe_water_label">Water (gr):</string>
+    <string name="create_recipe_name_hint">Gayo Madness</string>
+
+    <string name="recipe_coffee_blend_label">Coffee Origin/Blend</string>
+    <string name="create_recipe_coffee_blend_hint">Aceh Gayo</string>
+
+    <string name="recipe_brew_method_label">Brew Method</string>
+    <string name="create_recipe_brew_method_hint">Aero Press</string>
+
+    <string name="recipe_coffee_amount_label">Coffee (gr):</string>
+
+    <string name="recipe_water_amount_label">Water (ml):</string>
+
     <string name="recipe_temperature_label">Temperature (°C):</string>
-    <string name="recipe_grindSize_label">Grind Size:</string>
-    <string name="create_recipeName_hint">Gayo Madness</string>
-    <string name="grindSize_veryFine">Very Fine</string>
-    <string name="grindSize_fine">Fine</string>
-    <string name="grindSize_mediumFine">Medium Fine</string>
-    <string name="grindSize_medium">Medium</string>
-    <string name="grindSize_mediumCoarse">Medium Coarse</string>
-    <string name="grindSize_coarse">Coarse</string>
-    <string name="grindSize_extraCoarse">Extra Coarse</string>
-    <string name="create_recipeCoffeeBlend_hint">Aceh Gayo</string>
-    <string name="recipe_coffeeBlend_label">Coffee Origin/Blend</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="recipe_preparation_time_label">Preparation Time:</string>
+
+    <string name="recipe_grind_size_label">Grind Size:</string>
+    <string name="create_recipe_grind_size_hint">Coarse</string>
+
+    <string name="recipe_note_label">Notes:</string>
+    <string name="create_recipe_note_hint">Fruity</string>
+
+    <string name="start_brew_label">Brew!</string>
+
+    <!--Notification-->
+    <string name="notification_label">The time is up! your coffee is ready to be served!</string>
+
+    <!--Button Lables-->
+    <string name="save">SAVE</string>
+
+    <!--List Recipe Fields Format-->
     <string name="coffee_blend">咖 %s</string>
     <string name="coffee_and_water_amount">☕ %s gr - 💧 %s ml</string>
     <string name="preparation_time">🕑 %s minutes, and %s seconds</string>
     <string name="brew_method">🛠 %s</string>
     <string name="note">📝 %s</string>
-    <string name="save">SAVE</string>
-    <string name="recipe_preparation_time_label">Preparation Time:</string>
-    <string name="grind_size_label">Grind Size:</string>
-    <string name="brew_method_label">Brew Method</string>
-    <string name="recipe_note_hint">Fruity</string>
-    <string name="grind_size_hint">Coarse</string>
-    <string name="start_brew_label">Brew!</string>
-    <string name="notification_label">Brewing Finished</string>
-    <string name="create_recipeBrewMethod_hint">Aero Press</string>
-    <string name="recipe_note_label">Notes:</string>
-    <string name="list_recipe_label">List Recipe</string>
-    <string name="create_recipe_label">Add New Recipe</string>
-    <string name="detail_recipe_label">Detail Recipe</string>
+    <string name="create_recipe_preparation_time_minutes">minutes</string>
+    <string name="create_recipe_preparation_time_seconds">seconds</string>
+
+
 </resources>
