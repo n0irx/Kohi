@@ -6,10 +6,14 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.dao.RecipeDao
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeStepCrossRef
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Step
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.TastingNote
 
-@Database(entities = [Recipe::class, Step::class, RecipeStepCrossRef::class], version = 1, exportSchema = false)
+@Database(entities = [
+    Recipe::class,
+    Step::class,
+    TastingNote::class
+], version = 1, exportSchema = false)
 abstract class RecipeDatabase: RoomDatabase() {
 
     abstract val recipeDao: RecipeDao

@@ -4,12 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
-@Entity(tableName = "step")
-data class Step(
+@Entity(tableName = "tasting_note")
+data class TastingNote(
     @PrimaryKey(autoGenerate = true)
-    val stepId: Long,
+    val tastingNoteId: Long,
     var recipeId: Long,
-    var name: String,
-    var number: Int,
-    var timeInSeconds: Int
+    var note: String
 ): Serializable

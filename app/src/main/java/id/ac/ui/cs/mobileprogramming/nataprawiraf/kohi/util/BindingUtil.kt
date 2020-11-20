@@ -18,9 +18,3 @@ fun loadImage(view: ImageView, url: String?, placeholder: Drawable) {
     }
 }
 
-//@BindingAdapter("imageFromUri")
-//fun loadImageFromUriString(view: ImageView, uriString: String) {
-//    val uri: Uri = Uri.parse(uriString)
-//    Picasso.get().load(uri).into(view)
-//}
-

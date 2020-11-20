@@ -2,10 +2,7 @@ package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeStepCrossRef
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Step
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.*
 
 
 @Dao
@@ -24,10 +21,17 @@ abstract class RecipeDao {
     abstract suspend fun insertStep(step: Step): Long
 
     @Insert
-    abstract suspend fun insertRecipeXStep(recipeXStep: RecipeStepCrossRef)
+    abstract suspend fun insertSteps(step: List<Step>): List<Long>
+
+    @Insert
+    abstract suspend fun insertNotes(notes: List<TastingNote>): List<Long>
 
     @Transaction
     @Query("SELECT * FROM Recipe")
     abstract fun getRecipesWithSteps(): LiveData<List<RecipeWithSteps>>
+
+    @Transaction
+    @Query("SELECT * FROM Recipe")
+    abstract fun getRecipesWithNotes(): LiveData<List<RecipeWithNotes>>
 
 }
