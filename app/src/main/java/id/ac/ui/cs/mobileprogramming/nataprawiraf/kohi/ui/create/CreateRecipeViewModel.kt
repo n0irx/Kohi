@@ -1,19 +1,19 @@
 package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.create
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Step
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.TastingNote
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import kotlinx.coroutines.launch
 
 
 class CreateRecipeViewModel(private val repository: RecipeRepository): ViewModel() {
 
-    private fun insertRecipeWithSteps(recipeWithSteps: RecipeWithSteps) = viewModelScope.launch { repository.insertRecipeWithSteps(recipeWithSteps) }
+    private fun insertRecipeWithSteps(recipeWithSteps: RecipeWithSteps, notes: List<TastingNote>) = viewModelScope.launch { repository.insertRecipeWithSteps(recipeWithSteps, notes) }
 
     var inputName = MutableLiveData("")
     var inputCoffeeAmount = MutableLiveData("0")
@@ -60,10 +60,16 @@ class CreateRecipeViewModel(private val repository: RecipeRepository): ViewModel
             recipeImageSrc, recipeNote
         )
 
-        val step = Step(0, "Brew", 1, totalPreparationTimeInSeconds)
+        val step = Step(0, recipe.recipeId, "Brew", 1, totalPreparationTimeInSeconds)
 
-        insertRecipeWithSteps(RecipeWithSteps(recipe, arrayListOf(step)))
+        val stringNotes = recipeNote.split(",")
+        val notes = ArrayList<TastingNote>()
 
+        for (note in stringNotes) {
+            notes.add(TastingNote(0, recipe.recipeId, note))
+        }
+
+        insertRecipeWithSteps(RecipeWithSteps(recipe, arrayListOf(step)), notes)
         resetForm()
     }
 

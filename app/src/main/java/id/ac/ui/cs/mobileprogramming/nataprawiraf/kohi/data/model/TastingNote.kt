@@ -8,6 +8,6 @@ import java.io.Serializable
 data class TastingNote(
     @PrimaryKey(autoGenerate = true)
     val tastingNoteId: Long,
-    val recipeId: Long,
+    var recipeId: Long,
     var note: String
 ): Serializable

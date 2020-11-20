@@ -9,13 +9,13 @@ data class RecipeWithSteps(
     @Embedded val recipe: Recipe,
     @Relation(
         parentColumn = "recipeId",
-        entityColumn = "stepId",
-        associateBy = Junction(RecipeStepCrossRef::class)
+        entityColumn = "recipeId"
     )
-    val steps: List<Step>
+    val steps: List<Step>,
 ) : Serializable {
+
     private fun getTotalPreparationTime(): Int {
-        return steps.sumBy { it.timeInSeconds.toInt() }
+        return steps.sumBy { it.timeInSeconds }
     }
 
     fun getPreparationTimeSeconds(): Int {

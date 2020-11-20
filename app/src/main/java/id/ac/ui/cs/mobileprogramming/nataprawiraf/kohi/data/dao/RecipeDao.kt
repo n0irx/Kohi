@@ -21,13 +21,10 @@ abstract class RecipeDao {
     abstract suspend fun insertStep(step: Step): Long
 
     @Insert
-    abstract suspend fun insertNote(note: TastingNote): Long
+    abstract suspend fun insertSteps(step: List<Step>): List<Long>
 
     @Insert
     abstract suspend fun insertNotes(notes: List<TastingNote>): List<Long>
-
-    @Insert
-    abstract suspend fun insertRecipeXStep(recipeXStep: RecipeStepCrossRef)
 
     @Transaction
     @Query("SELECT * FROM Recipe")

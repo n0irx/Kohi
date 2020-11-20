@@ -8,6 +8,7 @@ import java.io.Serializable
 data class Step(
     @PrimaryKey(autoGenerate = true)
     val stepId: Long,
+    var recipeId: Long,
     var name: String,
     var number: Int,
     var timeInSeconds: Int
