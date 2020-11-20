@@ -5,25 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorMidnight"
-    tools:context=".ui.list.ListRecipeFragment">
+    tools:context=".ui.SplashScreenActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        tools:listitem="@layout/recyclerview_list_recipe"
-        android:id="@+id/rv_list_recipe"
-        android:layout_width="match_parent"
-        android:background="@color/colorMidnight"
-        android:layout_height="match_parent" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add_recipe"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:src="@drawable/ic_baseline_add_48"
+        android:text="@string/app_name"
+        android:textSize="86sp"
+        android:fontFamily="@font/vigaregular"
+        android:textColor="@color/colorGainsboro"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"
-        android:focusable="true" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

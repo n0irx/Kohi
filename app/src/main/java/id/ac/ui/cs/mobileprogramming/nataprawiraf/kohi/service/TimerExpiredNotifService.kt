@@ -28,12 +28,14 @@ class TimerExpiredNotifService : Service() {
     }
 
     override fun onCreate() {
-        message = getString(R.string.notification_label)
         context = applicationContext
         super.onCreate()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        if (intent != null) {
+            message = intent.getStringExtra("kohiMessage") ?: ""
+        }
         createNotificationChannel()
         sendNotification()
         Log.i("TIMER_TAG", "SENDIN NOTIFICATION")
@@ -43,7 +45,7 @@ class TimerExpiredNotifService : Service() {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Kohi Timer Notification"
-            val descriptionText = "Kohi Timer Expired Notification"
+            val descriptionText = "Kohi Timer Notification"
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, name, importance).apply {
                 description = descriptionText
@@ -56,8 +58,8 @@ class TimerExpiredNotifService : Service() {
     private fun sendNotification() {
         val builder = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_launcher_background)
-            .setContentTitle("Kohi Timer")
-            .setContentText("Kohi Timer Awaw")
+            .setContentTitle(getString(R.string.app_name))
+            .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(context)) {

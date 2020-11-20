@@ -84,6 +84,7 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             app:imageFromUri="@{recipesWithSteps.recipe.imageSource}"
+            app:placeholder="@{@drawable/ic_baseline_insert_photo_24}"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:id="@+id/recipe_image"

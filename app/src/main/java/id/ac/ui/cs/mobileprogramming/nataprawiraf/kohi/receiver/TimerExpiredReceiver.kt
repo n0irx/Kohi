@@ -15,13 +15,16 @@ class TimerExpiredReceiver : BroadcastReceiver() {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
         PrefUtil.setTimerState(DetailRecipeFragment.TimerState.Stopped, context)
         PrefUtil.setAlarmSetTime(0, context)
+
         Log.i("BROADCAST", "RECEIVED")
 
-        val intent = Intent(context, TimerExpiredNotifService::class.java)
+        val toServiceIntent = Intent(context, TimerExpiredNotifService::class.java)
+        toServiceIntent.putExtra("kohiMessage", intent.getStringExtra("kohiMessage"))
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            context.startForegroundService(intent)
+            context.startForegroundService(toServiceIntent)
         } else {
-            context.startService(intent)
+            context.startService(toServiceIntent)
         }
     }
 }

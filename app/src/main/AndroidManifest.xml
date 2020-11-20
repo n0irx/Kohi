@@ -16,7 +16,7 @@
         <service
             android:name=".service.TimerExpiredNotifService"
             android:enabled="true"
-            android:exported="false"></service>
+            android:exported="false" />
 
         <receiver
             android:name=".receiver.TimerExpiredReceiver"
@@ -24,7 +24,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".ui.list.ListRecipeActivity"
+            android:name=".ui.SplashScreenActivity"
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,8 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.list.ListRecipeActivity" />
         <activity android:name=".ui.create.CreateRecipeActivity" />
         <activity android:name=".ui.detail.DetailRecipeActivity" />
+
     </application>
 
 </manifest>

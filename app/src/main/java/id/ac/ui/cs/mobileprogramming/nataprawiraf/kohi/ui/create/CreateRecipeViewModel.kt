@@ -42,17 +42,17 @@ class CreateRecipeViewModel(private val repository: RecipeRepository): ViewModel
     }
 
     fun save() {
-        val recipeName = inputName.value!!
-        val recipeCoffeeBlend = inputCoffeeBlend.value!!
-        val recipeCoffeeAmount = inputCoffeeAmount.value!!.toInt()
-        val recipeGrindSize = inputGrindSize.value!!
-        val recipeBrewMethod = inputBrewMethod.value!!
-        val recipeWater = inputWaterAmount.value!!.toInt()
-        val recipeWaterTemperature = inputWaterTemperature.value!!.toInt()
-        val recipeImageSrc = inputImageSource.value!!
-        val recipeNote = inputRecipeNote.value!!
-        val preparationMinutes : Int = inputPreparationTimeMinutes.value!!.toInt() * ONE_MINUTES_IN_SECONDS
-        val preparationSeconds : Int = inputPreparationTimeSeconds.value!!.toInt()
+        val recipeName = inputName.value ?: "-"
+        val recipeCoffeeBlend = inputCoffeeBlend.value ?: "-"
+        val recipeCoffeeAmount = inputCoffeeAmount.value?.toIntOrNull() ?: 0
+        val recipeGrindSize = inputGrindSize.value ?: "-"
+        val recipeBrewMethod = inputBrewMethod.value ?: "-"
+        val recipeWater = inputWaterAmount.value?.toIntOrNull() ?: 0
+        val recipeWaterTemperature = inputWaterTemperature.value?.toIntOrNull() ?: 0
+        val recipeImageSrc = inputImageSource.value ?: ""
+        val recipeNote = inputRecipeNote.value ?: ""
+        val preparationMinutes : Int = inputPreparationTimeMinutes.value?.toIntOrNull() ?: 0 * ONE_MINUTES_IN_SECONDS
+        val preparationSeconds : Int = inputPreparationTimeSeconds.value?.toIntOrNull() ?: 0
         val totalPreparationTimeInSeconds: Int = preparationMinutes + preparationSeconds
 
         val recipe = Recipe(0, recipeName, recipeCoffeeBlend, recipeCoffeeAmount,
