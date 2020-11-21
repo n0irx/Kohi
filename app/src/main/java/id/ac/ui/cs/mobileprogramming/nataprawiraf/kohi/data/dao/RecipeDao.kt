@@ -32,9 +32,6 @@ abstract class RecipeDao {
     @Delete
     abstract suspend fun deleteStep(step: Step)
 
-    @Delete
-    abstract suspend fun deleteNoteByRecipeId(recipeId: Long)
-
     @Transaction
     @Query("SELECT * FROM Recipe")
     abstract fun getRecipesWithSteps(): LiveData<List<RecipeWithSteps>>

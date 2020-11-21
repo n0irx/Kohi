@@ -25,7 +25,6 @@ class RecipeRepository(private val dao: RecipeDao) {
 
     suspend fun deleteRecipeWithSteps(recipeWithSteps: RecipeWithSteps) {
         for (step in recipeWithSteps.steps) dao.deleteStep(step)
-        dao.deleteNoteByRecipeId(recipeWithSteps.recipe.recipeId)
         dao.deleteRecipe(recipeWithSteps.recipe)
     }
 
