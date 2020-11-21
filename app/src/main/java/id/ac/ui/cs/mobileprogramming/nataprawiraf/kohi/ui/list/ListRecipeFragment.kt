@@ -55,6 +55,7 @@ class ListRecipeFragment : Fragment(), ListRecipeAdapter.OnRecipeCickListener {
         val intent = Intent(activity, DetailRecipeActivity::class.java)
         intent.putExtra("recipeWithSteps", clickedRecipe)
         startActivity(intent)
+        activity?.finish()
     }
 }
 
