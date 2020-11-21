@@ -9,10 +9,7 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.RecipeDatabase
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Recipe
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
-import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.Step
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.KohiDatabase
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRepository
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.databinding.FragmentCreateRecipeBinding
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.list.ListRecipeActivity
@@ -43,7 +40,7 @@ class CreateRecipeFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val dao = RecipeDatabase.getInstance(requireActivity()).recipeDao
+        val dao = KohiDatabase.getInstance(requireActivity()).recipeDao
         val repository = RecipeRepository(dao)
 
         factory = CreateRecipeViewModelFactory(repository)

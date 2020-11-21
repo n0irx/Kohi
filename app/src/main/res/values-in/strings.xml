@@ -1,0 +1,54 @@
+<resources>
+
+    <!--general-->
+    <string name="app_name">Kōhī</string>
+
+    <!--Notification-->
+    <string name="notification_label">Waktu hitung mundur sudah habis! Kopi anda sudah siap dihidangkan</string>
+    <string name="notification_name">Notifikasi Timer Kohi</string>
+    <string name="notification_description">Notifikasi Timer Kohi</string>
+
+    <!--title-->
+    <string name="create_recipe_title">Tambah Resep Baru</string>
+    <string name="detail_recipe_title">Detil Resep</string>
+    <string name="list_recipe_title">Daftar Resep</string>
+
+    <!--Create Recipe Fields-->
+    <string name="recipe_name_label">Nama Resep:</string>
+    <string name="create_recipe_name_hint">Gayo Mantap</string>
+
+    <string name="recipe_coffee_blend_label">Coffee Origin/Blend:</string>
+    <string name="create_recipe_coffee_blend_hint">Aceh Gayo</string>
+
+    <string name="recipe_brew_method_label">Metode Seduh</string>
+    <string name="create_recipe_brew_method_hint">Aero Press</string>
+
+    <string name="recipe_coffee_amount_label">Kopi (gr):</string>
+
+    <string name="recipe_water_amount_label">Air (ml):</string>
+
+    <string name="recipe_temperature_label">Suhu Air (°C):</string>
+
+    <string name="recipe_preparation_time_label">Waktu Seduh:</string>
+
+    <string name="recipe_grind_size_label">Ukuran Gilingan:</string>
+    <string name="create_recipe_grind_size_hint">Kasar</string>
+
+    <string name="recipe_note_label">Catatan:</string>
+    <string name="create_recipe_note_hint">Kebuah-buahan</string>
+
+    <string name="start_brew_label">Seduh!</string>
+
+    <!--Button Lables-->
+    <string name="save">Simpan</string>
+
+    <!--List Recipe Fields Format-->
+    <string name="coffee_blend">咖 %s</string>
+    <string name="coffee_and_water_amount">☕ %s gr - 💧 %s ml</string>
+    <string name="preparation_time">🕑 %s menit, and %s detik</string>
+    <string name="brew_method">🛠 %s</string>
+    <string name="note">📝 %s</string>
+    <string name="create_recipe_preparation_time_minutes">menit</string>
+    <string name="create_recipe_preparation_time_seconds">detik</string>
+
+</resources>

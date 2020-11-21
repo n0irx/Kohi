@@ -3,6 +3,11 @@
     <!--general-->
     <string name="app_name">Kōhī</string>
 
+    <!--Notification-->
+    <string name="notification_label">The time is up! your coffee is ready to be served!</string>
+    <string name="notification_name">Kohi Timer Notification</string>
+    <string name="notification_description">Kohi Timer Notification</string>
+
     <!--title-->
     <string name="create_recipe_title">Add New Recipe</string>
     <string name="detail_recipe_title">Detail Recipe</string>
@@ -34,11 +39,8 @@
 
     <string name="start_brew_label">Brew!</string>
 
-    <!--Notification-->
-    <string name="notification_label">The time is up! your coffee is ready to be served!</string>
-
     <!--Button Lables-->
-    <string name="save">SAVE</string>
+    <string name="save">Save</string>
 
     <!--List Recipe Fields Format-->
     <string name="coffee_blend">咖 %s</string>
