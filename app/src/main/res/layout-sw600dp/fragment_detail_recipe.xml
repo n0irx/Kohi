@@ -446,6 +446,12 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <Button
+                    android:id="@+id/btn_delete_recipe"
+                    android:layout_width="match_parent"
+                    android:text="@string/delete_recipe"
+                    android:layout_height="match_parent"/>
+
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

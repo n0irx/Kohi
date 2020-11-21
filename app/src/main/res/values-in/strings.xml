@@ -50,5 +50,7 @@
     <string name="note">📝 %s</string>
     <string name="create_recipe_preparation_time_minutes">menit</string>
     <string name="create_recipe_preparation_time_seconds">detik</string>
+    <string name="delete_recipe">Delete Recipe</string>
+
 
 </resources>
