@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.R
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.KohiDatabase
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.model.RecipeWithSteps
@@ -20,8 +21,10 @@ import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.data.repository.RecipeRep
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.databinding.FragmentDetailRecipeBinding
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.receiver.TimerExpiredReceiver
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.service.TimerExpiredNotifService
+import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.list.ListRecipeActivity
 import id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.util.PrefUtil
 import kotlinx.android.synthetic.main.fragment_detail_recipe.*
+import kotlinx.coroutines.launch
 import java.util.*
 
 
@@ -56,6 +59,17 @@ class DetailRecipeFragment : Fragment() {
         if (recipeWithStep != null) viewModel.setRecipeWithSteps(recipeWithStep)
 
         initTimerActions()
+
+        btn_delete_recipe.setOnClickListener {
+            viewLifecycleOwner.lifecycleScope.launch() {
+                if (recipeWithStep != null) {
+                    repository.deleteRecipeWithSteps(recipeWithStep)
+                }
+            }
+            val intent = Intent(activity, ListRecipeActivity::class.java)
+            activity?.startActivity(intent)
+            activity?.finish()
+        }
     }
 
     override fun onResume() {

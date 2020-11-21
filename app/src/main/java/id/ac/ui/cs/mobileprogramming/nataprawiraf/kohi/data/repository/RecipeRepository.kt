@@ -23,6 +23,12 @@ class RecipeRepository(private val dao: RecipeDao) {
         return dao.insertNotes(notes)
     }
 
+    suspend fun deleteRecipeWithSteps(recipeWithSteps: RecipeWithSteps) {
+        for (step in recipeWithSteps.steps) dao.deleteStep(step)
+        dao.deleteNoteByRecipeId(recipeWithSteps.recipe.recipeId)
+        dao.deleteRecipe(recipeWithSteps.recipe)
+    }
+
     suspend fun insertRecipeWithSteps(recipeWithSteps: RecipeWithSteps, notes: List<TastingNote>) {
         val recipeId = insertRecipe(recipeWithSteps.recipe)
         for (step in recipeWithSteps.steps) step.recipeId = recipeId
