@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_kohi_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.PermissionInfoActivity"></activity>
+
         <service
             android:name=".service.TimerExpiredNotifService"
             android:enabled="true"
@@ -36,7 +38,6 @@
         <activity android:name=".ui.list.ListRecipeActivity" />
         <activity android:name=".ui.create.CreateRecipeActivity" />
         <activity android:name=".ui.detail.DetailRecipeActivity" />
-
     </application>
 
 </manifest>

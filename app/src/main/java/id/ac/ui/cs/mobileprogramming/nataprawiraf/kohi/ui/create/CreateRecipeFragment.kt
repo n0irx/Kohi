@@ -107,6 +107,7 @@ class CreateRecipeFragment : Fragment() {
             val intent = Intent(activity, ListRecipeActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
