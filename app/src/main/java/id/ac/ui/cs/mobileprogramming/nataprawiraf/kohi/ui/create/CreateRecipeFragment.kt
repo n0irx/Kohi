@@ -18,6 +18,12 @@ import kotlinx.android.synthetic.main.fragment_create_recipe.*
 
 class CreateRecipeFragment : Fragment() {
 
+    init {
+        System.loadLibrary("native-lib")
+    }
+
+    external fun subtract(a: Int, b: Int): Int
+
     private lateinit var factory: CreateRecipeViewModelFactory
     private lateinit var viewModel: CreateRecipeViewModel
     private lateinit var binding: FragmentCreateRecipeBinding
@@ -50,7 +56,7 @@ class CreateRecipeFragment : Fragment() {
         binding.createRecipeViewModel = viewModel
 
         // Coffee weight field
-        sb_create_coffee_amount_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
+        sb_create_coffee_amount_input!!.max = subtract(maxWeightInGram, minWeightInGram) / stepInGram
         sb_create_coffee_amount_input.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(
@@ -66,7 +72,7 @@ class CreateRecipeFragment : Fragment() {
         })
 
         // Water weight field
-        sb_create_recipe_water_input!!.max = (maxWeightInGram - minWeightInGram) / stepInGram
+        sb_create_recipe_water_input!!.max = subtract(maxWeightInGram, minWeightInGram) / stepInGram
         sb_create_recipe_water_input.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(
@@ -82,7 +88,7 @@ class CreateRecipeFragment : Fragment() {
         })
 
         // Water temperature weight field
-        sb_create_recipe_temperature_input!!.max = (maxDegreeInCelsius - minDegreeInCelsius) / stepInCelsius
+        sb_create_recipe_temperature_input!!.max = subtract(maxDegreeInCelsius, minDegreeInCelsius) / stepInCelsius
         sb_create_recipe_temperature_input.setOnSeekBarChangeListener(object :
             SeekBar.OnSeekBarChangeListener {
             override fun onProgressChanged(

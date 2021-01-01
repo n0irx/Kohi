@@ -44,9 +44,9 @@ class MyGLRenderer : GLSurfaceView.Renderer {
 // number of coordinates per vertex in this array
 const val COORDS_PER_VERTEX = 3
 var triangleCoords = floatArrayOf(     // in counterclockwise order:
-        0.0f, 0.622008459f, 0.0f,      // top
-        -0.5f, -0.311004243f, 0.0f,    // bottom left
-        0.5f, -0.311004243f, 0.0f      // bottom right
+        0.0f, -0.611004243f, 0.0f,      // top
+        0.9f, 0.322008459f, 0.0f,    // bottom left
+        -0.9f, 0.322008459f, 0.0f      // bottom right
 )
 
 class Triangle {

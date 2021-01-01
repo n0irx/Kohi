@@ -20,41 +20,10 @@ class SplashScreenActivity : AppCompatActivity() {
         gLView = MyGLSurfaceView(this)
         setContentView(gLView)
 
-        if(isNetworkAvailable(this)){
-
-            Handler().postDelayed({
-                val intent = Intent(this, ListRecipeActivity::class.java)
-                startActivity(intent)
-                finish()
-            }, 3000)
-        } else {
-            showAlertMenu()
-        }
-    }
-
-    fun isNetworkAvailable(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        var activeNetworkInfo: NetworkInfo? = null
-        activeNetworkInfo = cm.activeNetworkInfo
-        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
-    }
-
-    private fun showAlertMenu() {
-        val builder =
-                AlertDialog.Builder(this)
-
-        builder.setMessage("Kohi need Internet Connection for better user experience, please enable it")
-        builder.setTitle("Warning!")
-        builder.setCancelable(false)
-
-        builder
-            .setPositiveButton(
-                "Back",
-                DialogInterface.OnClickListener { dialog, which ->
-                    finish()
-                })
-
-        val alertDialog: AlertDialog = builder.create()
-        alertDialog.show()
+        Handler().postDelayed({
+            val intent = Intent(this, ListRecipeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 3000)
     }
 }
