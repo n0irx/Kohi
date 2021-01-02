@@ -34,14 +34,8 @@ class CreateRecipeActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun myMethod(){
-        // your main stuff
-    }
-
     fun permissionProcess() {
         if (Build.VERSION.SDK_INT < 23) {
-            // do your stuff
-            myMethod()
         } else {
             val hasReadExternalStoragePermission = checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
             if (hasReadExternalStoragePermission != PackageManager.PERMISSION_GRANTED) {
@@ -49,8 +43,6 @@ class CreateRecipeActivity : AppCompatActivity() {
                     101)
                 return
             }
-            // do your stuff
-            myMethod()
         }
     }
 
@@ -58,7 +50,6 @@ class CreateRecipeActivity : AppCompatActivity() {
         when (requestCode) {
             101 -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission Granted, do your stuff
-                myMethod()
             } else {
                 // Permission Denied
                 Toast.makeText(this, "READ_EXTERNAL_STORAGE Denied", Toast.LENGTH_SHORT)
