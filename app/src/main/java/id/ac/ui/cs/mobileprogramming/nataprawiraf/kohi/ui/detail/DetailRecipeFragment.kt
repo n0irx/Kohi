@@ -3,7 +3,10 @@ package id.ac.ui.cs.mobileprogramming.nataprawiraf.kohi.ui.detail
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -11,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -108,9 +112,13 @@ class DetailRecipeFragment : Fragment() {
 
     private fun initTimerActions() {
         btn_play_recipe_timer.setOnClickListener {
-            startTimer()
-            timerState = TimerState.Running
-            updateButtons()
+            if (isNetworkAvailable(requireActivity())) {
+                startTimer()
+                timerState = TimerState.Running
+                updateButtons()
+            } else {
+                showAlertMenu()
+            }
         }
 
         btn_pause_recipe_timer.setOnClickListener {
@@ -223,6 +231,30 @@ class DetailRecipeFragment : Fragment() {
                 btn_stop_recipe_timer.isEnabled = true
             }
         }
+    }
+
+    fun isNetworkAvailable(context: Context): Boolean {
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        var activeNetworkInfo: NetworkInfo? = null
+        activeNetworkInfo = cm.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
+    }
+
+    private fun showAlertMenu() {
+        val builder =
+                AlertDialog.Builder(requireActivity())
+
+        builder.setMessage("Kohi need Internet Connection for better user experience, please enable it")
+        builder.setTitle("Warning!")
+        builder.setCancelable(false)
+
+        builder
+            .setPositiveButton(
+                "Back"
+            ) { _, _ -> }
+
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.show()
     }
 
     companion object {

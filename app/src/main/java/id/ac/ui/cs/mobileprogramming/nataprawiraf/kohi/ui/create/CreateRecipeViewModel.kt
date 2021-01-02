@@ -13,6 +13,12 @@ import kotlinx.coroutines.launch
 
 class CreateRecipeViewModel(private val repository: RecipeRepository): ViewModel() {
 
+    init {
+        System.loadLibrary("native-lib")
+    }
+
+    external fun timeSeconds(a: Int): Int
+
     private fun insertRecipeWithSteps(recipeWithSteps: RecipeWithSteps, notes: List<TastingNote>) = viewModelScope.launch { repository.insertRecipeWithSteps(recipeWithSteps, notes) }
 
     var inputName = MutableLiveData("")
@@ -51,7 +57,7 @@ class CreateRecipeViewModel(private val repository: RecipeRepository): ViewModel
         val recipeWaterTemperature = inputWaterTemperature.value?.toIntOrNull() ?: 0
         val recipeImageSrc = inputImageSource.value ?: ""
         val recipeNote = inputRecipeNote.value ?: ""
-        val preparationMinutes : Int = inputPreparationTimeMinutes.value?.toIntOrNull() ?: 0 * ONE_MINUTES_IN_SECONDS
+        val preparationMinutes : Int = inputPreparationTimeMinutes.value?.toIntOrNull() ?: timeSeconds(0)
         val preparationSeconds : Int = inputPreparationTimeSeconds.value?.toIntOrNull() ?: 0
         val totalPreparationTimeInSeconds: Int = preparationMinutes + preparationSeconds
 
